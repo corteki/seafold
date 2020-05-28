@@ -25,6 +25,15 @@
     "editor-e2e": {
       "tags": [],
       "implicitDependencies": ["editor"]
+    },
+    "user-interface": {
+      "tags": []
+    },
+    "core": {
+      "tags": []
+    },
+    "di": {
+      "tags": []
     }
   }
 }

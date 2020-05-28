@@ -1,0 +1,20 @@
+.page-panel {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 32px;
+  min-height: inherit;
+
+  &__toolbar {
+    display: flex;
+  }
+
+  &.drag-over {
+    transition: border 100ms ease-in;
+    border: 8px solid rgba(120, 110, 255, .5);
+  }
+
+  #root {
+    flex: 1;
+  }
+}

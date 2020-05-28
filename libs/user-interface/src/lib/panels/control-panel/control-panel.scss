@@ -1,0 +1,19 @@
+.control-panel {
+  background-color: rgba(10, 5, 45, 1);
+  display: flex;
+  flex-direction: column;
+  min-height: inherit;
+
+  &__item {
+    display: flex;
+    color: white;
+    padding: 16px 40px;
+    margin: 8px;
+    min-height: 64px;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(25, 20, 65);
+    border: 1px solid rgb(5, 50, 100);
+    border-radius: 4px;
+  }
+}

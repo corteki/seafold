@@ -1,0 +1,33 @@
+.container {
+
+  &.inPreview {
+    padding: 4px;
+    border: none;
+  }
+
+  &.isSelected {
+    border: 2px solid rgba(0, 117, 255, 1);
+    padding: 2px;
+  }
+
+  cursor: pointer;
+  padding: 3px;
+  border: 1px solid rgba(0, 117, 255, 1);
+  flex: 1;
+}
+
+.insert {
+  background-color: rgba(0, 117, 255, 0);
+  padding: 8px;
+  flex: 1;
+  transition: all 100ms ease-in-out;
+  cursor: pointer;
+  margin: 4px 0;
+
+  &--active {
+    padding: 8px;
+    flex: 1;
+    margin: 4px 0;
+    background-color: rgba(0, 117, 255, 0.7);
+  }
+}
