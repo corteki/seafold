@@ -1,15 +1,17 @@
 import React from 'react';
-import { InsertModel } from "./InsertModel"
+import { InsertEventHandler } from "./InsertEventHandler"
 import {cleanup, render} from '@testing-library/react';
 import { Insert } from './Insert';
+import { InsertModel } from './InsertModel';
 
 describe('<Insert />', () => {
   afterEach(cleanup);
   it('should set a path and index defined by the InsertModel', () => {
-    const insertModel = new InsertModel(0, '');
+    const model = new InsertModel(0, '');
+    const eventHandler = new InsertEventHandler(model);
 
     const {getByTestId} = render(
-      <Insert model={insertModel}/>
+      <Insert eventHandler={eventHandler}/>
     );
 
     const element = getByTestId('insert-0');

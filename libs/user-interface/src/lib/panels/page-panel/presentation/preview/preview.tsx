@@ -1,9 +1,8 @@
 import React from 'react';
-
-import './preview.scss';
-import { PreviewModel } from './preview.model';
+import { PreviewModel } from './PreviewModel';
 import { observer } from 'mobx-react';
 import { Button } from '../../../../Button/Button';
+import './Preview.scss';
 
 /* eslint-disable-next-line */
 export interface PreviewProps {

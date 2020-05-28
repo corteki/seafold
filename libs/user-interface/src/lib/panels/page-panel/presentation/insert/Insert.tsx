@@ -1,21 +1,21 @@
 import React from 'react';
 import { FunctionComponent } from 'react';
-import { InsertModel } from './InsertModel';
+import { InsertEventHandler } from './InsertEventHandler';
 import { observer } from 'mobx-react';
 
 export interface InsertProps {
-  model: InsertModel;
+  eventHandler: InsertEventHandler;
 }
 
 export const Insert: FunctionComponent<InsertProps> = observer(
-  ({model}) => {
+  ({eventHandler}) => {
   return (
-    <div className={model.isActive ? 'insert--active' : 'insert'}
-      data-testid={`insert-${model.index}`}
-      onDragEnter={model.handleDragEnter}
-      onDragLeave={model.handleDragExit}
-      data-index={model.index}
-      data-path={model.path}>
+    <div className={eventHandler.insert.isActive ? 'insert--active' : 'insert'}
+      data-testid={`insert-${eventHandler.insert.index}`}
+      onDragEnter={eventHandler.handleDragEnter}
+      onDragLeave={eventHandler.handleDragExit}
+      data-index={eventHandler.insert.index}
+      data-path={eventHandler.insert.path}>
     </div>
   );
 });

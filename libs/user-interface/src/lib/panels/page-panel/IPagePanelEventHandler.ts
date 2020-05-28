@@ -1,5 +1,5 @@
 import { PagePanelModel } from './presentation/PagePanelModel';
-import { PreviewModel } from './presentation/preview/preview.model';
+import { PreviewModel } from './presentation/preview/PreviewModel';
 import { ResourceFactory } from './presentation/container/ResourceFactory';
 
 export const IPagePanelEventHandler = 'IPagePanelEventHandler';

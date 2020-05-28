@@ -1,31 +1,30 @@
 import React, { FunctionComponent } from 'react';
 import { Container } from "./Container";
-import { ContainerController } from './ContainerController';
+import { ContainerEventHandler } from './ContainerEventHandler';
 import { ContainerModel } from './ContainerModel';
 import { EditorComponent, EditorElement } from '@seafold/core';
 import { IPagePanelEventHandler } from '@seafold/user-interface';
-import { ResourceFactory } from './ResourceFactory';
 
 interface RecursiveContainerFactoryProps {
   components: Map<string, EditorComponent>;
   resource: EditorElement;
-  controller: IPagePanelEventHandler;
+  eventHandler: IPagePanelEventHandler;
 }
 
 export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFactoryProps> = 
-  ({components, resource, controller}) => {
+  ({components, resource, eventHandler}) => {
   const component = components.get(resource.name);
   return (
   <Container
-    controller={
-      new ContainerController(
+    eventHandler={
+      new ContainerEventHandler(
         new ContainerModel(resource, component!.type), 
-        controller
+        eventHandler
       )
     }>
     {
       component && 
-      controller.resourceFactory.create(component, 
+        eventHandler.resourceFactory.create(component, 
           resource.getDescendants()
             .map(descendant => {
               const component = components.get(descendant.name);          
@@ -33,17 +32,17 @@ export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFact
                 return <RecursiveContainerFactory 
                   components={components} 
                   resource={descendant}
-                  controller={controller}/>
+                  eventHandler={eventHandler}/>
               }
               return (
               <Container
-                controller={
-                  new ContainerController(
+                eventHandler={
+                  new ContainerEventHandler(
                     new ContainerModel(descendant, component!.type), 
-                    controller
+                    eventHandler
                   )
                 }>
-              {component && controller.resourceFactory.create(component)}
+              {component && eventHandler.resourceFactory.create(component)}
               </Container>
             );
           })

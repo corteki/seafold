@@ -3,11 +3,12 @@ import { observer } from "mobx-react";
 import { ComponentType } from '@seafold/core'
 import './PagePanel.scss';
 import { IPagePanelEventHandler } from '@seafold/user-interface';
-import Preview from './preview/preview';
+import Preview from './preview/Preview';
 import { RecursiveContainerFactory } from './container/RecursiveContainerFactory';
 import { Insert } from './insert/Insert';
-import { InsertModel } from './insert/InsertModel';
+import { InsertEventHandler } from './insert/InsertEventHandler';
 import { Button } from '../../../Button/Button';
+import { InsertModel } from './insert/InsertModel';
 
 /* eslint-disable-next-line */
 export interface PagePanelProps {
@@ -42,11 +43,16 @@ export const PagePanel: FC<PagePanelProps> = observer(
               <RecursiveContainerFactory 
                 components={pagePanel.components}
                 resource={resource}
-                controller={eventHandler}/>
+                eventHandler={eventHandler}/>
             )
         }
         <Insert 
-          model={new InsertModel(root.getLastDescendantIndex())}/>
+          eventHandler={
+            new InsertEventHandler(
+              new InsertModel(root.getLastDescendantIndex()
+              )
+            )
+          }/>
       </section>
       )}
     </section>

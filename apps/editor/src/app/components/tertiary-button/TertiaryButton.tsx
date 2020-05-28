@@ -14,22 +14,22 @@ export class TertiaryButton extends PureComponent<TertiaryButtonProps> {
   @Configurable.InlineProperty('Tertiary Button', TextControl)
   private readonly text?: string;
 
-  @Configurable.Property({
-    width: '100%',
-    padding: '16px 32px',
-    borderRadius: '4px',
-    backgroundColor: 'rgb(207, 113, 113)',
-    color: 'white',
-    border: 'none',
-    outline: 'none',
-    cursor: 'pointer'
-  }, StyleControl)
-  private readonly style?: string;
+  // @Configurable.Property({
+  //   width: '100%',
+  //   padding: '16px 32px',
+  //   borderRadius: '4px',
+  //   backgroundColor: 'rgb(207, 113, 113)',
+  //   color: 'white',
+  //   border: 'none',
+  //   outline: 'none',
+  //   cursor: 'pointer'
+  // }, StyleControl)
+  // private readonly style?: string;
 
   render() {
-    const {text, style} = this.props;
+    const {text} = this.props;
     return (
-      <button style={style.value}>
+      <button>
         {text.value}
       </button>
     )

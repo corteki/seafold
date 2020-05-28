@@ -1,4 +1,3 @@
-
 export * from './lib/panels/page-panel/presentation/PagePanel';
 export * from './lib/panels/control-panel/control-panel';
 export * from './lib/panels/component-panel/component-panel';
@@ -9,7 +8,7 @@ export { ControlProps } from './lib/panels/page-panel/presentation/layers/Contro
 export { ControlPanelModel } from './lib/panels/control-panel/control-panel.model';
 export { ComponentPanelModel } from './lib/panels/component-panel/component-panel.model';
 export { PagePanelModel } from './lib/panels/page-panel/presentation/PagePanelModel';
-export { PreviewModel } from './lib/panels/page-panel/presentation/preview/preview.model';
+export { PreviewModel } from './lib/panels/page-panel/presentation/preview/PreviewModel';
 
 export { PagePanelNodeTraverser } from './lib/panels/services/PagePanelNodeTraverser';
 export { PagePanelEventHandler } from './lib/panels/services/PagePanelEventHandler';

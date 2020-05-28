@@ -4,7 +4,7 @@ import { runtime } from '@seafold/core';
 import { inject } from 'inversify';
 import { IPagePanelEventHandler } from '../page-panel/IPagePanelEventHandler';
 import { provide } from 'inversify-binding-decorators';
-import { PreviewModel } from '../page-panel/presentation/preview/preview.model';
+import { PreviewModel } from '../page-panel/presentation/preview/PreviewModel';
 import { ResourceFactory } from '../page-panel/presentation/container/ResourceFactory';
 
 @provide(IPagePanelEventHandler)

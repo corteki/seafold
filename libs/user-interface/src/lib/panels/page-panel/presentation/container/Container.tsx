@@ -1,19 +1,19 @@
 import React, { FunctionComponent } from 'react';
 import './Container.scss';
-import { ContainerController } from './ContainerController';
+import { ContainerEventHandler } from './ContainerEventHandler';
 import { InsertionLayer } from '../layers/InsertionLayer';
 import { observer } from 'mobx-react';
 
 /* eslint-disable-next-line */
 export interface ContainerProps {
-  controller: ContainerController;
+  eventHandler: ContainerEventHandler;
 }
 
 export const Container: FunctionComponent<ContainerProps> = observer(
-  ({controller, children}) => {
+  ({eventHandler, children}) => {
   return (
     <InsertionLayer 
-      controller={controller}>
+      eventHandler={eventHandler}>
       {children}
     </InsertionLayer>
   );

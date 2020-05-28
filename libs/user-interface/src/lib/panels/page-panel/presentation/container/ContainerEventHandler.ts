@@ -2,7 +2,7 @@ import { ContainerModel } from './ContainerModel';
 import { action } from 'mobx';
 import { IPagePanelEventHandler } from '../../IPagePanelEventHandler';
 
-export class ContainerController {
+export class ContainerEventHandler {
 
   constructor(
     public container: ContainerModel,

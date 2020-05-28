@@ -17,7 +17,7 @@ export class App {
     return (
       <section className="editor">
         <ComponentPanel model={new ComponentPanelModel()}/>
-        {this.pagePanelEventHandler && <PagePanel controller={this.pagePanelEventHandler}/>}
+        {this.pagePanelEventHandler && <PagePanel eventHandler={this.pagePanelEventHandler}/>}
         <ControlPanel model={new ControlPanelModel()}/>
       </section>
     );

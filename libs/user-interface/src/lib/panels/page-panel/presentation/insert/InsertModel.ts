@@ -14,15 +14,8 @@ export class InsertModel {
   }
 
   @action.bound
-  handleDragEnter(e: React.DragEvent): void {
-    e.preventDefault
-    this.isActive = true;
-  }
-
-  @action.bound
-  handleDragExit(e: React.DragEvent): void {
-    e.preventDefault
-    this.isActive = false;
+  setIsActive(isActive: boolean): void {
+    this.isActive = isActive;
   }
 
   private setPath(path: string): string {
