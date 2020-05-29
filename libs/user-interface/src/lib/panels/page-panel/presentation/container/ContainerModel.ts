@@ -1,6 +1,5 @@
 import { observable } from 'mobx';
 import { ComponentType, EditorElement } from '@seafold/core';
-import { Properties } from 'libs/core/src/lib/Properties';
 
 export class ContainerModel {
 
