@@ -10,7 +10,7 @@ export class EventHandlerContext {
   @inject(IPagePanelEventHandler) 
   private pagePanelEventHandler!: IPagePanelEventHandler;
 
-  useHandlers = () => {
+  useEventHandlers = () => {
     return useContext(this.create());
   }
 

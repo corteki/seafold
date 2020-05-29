@@ -5,10 +5,10 @@ import {
 import './app.scss';
 import './controls';
 import './components';
-import { useHandlers } from './contexts';
+import { useEventHandlers } from './contexts';
 
 export const App = () => {
-  const { pagePanelEventHandler } = useHandlers();
+  const { pagePanelEventHandler } = useEventHandlers();
   return (
     <section className="editor">
       <ComponentPanel model={new ComponentPanelModel()}/>
