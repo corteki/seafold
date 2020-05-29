@@ -1,7 +1,7 @@
-import React, { PureComponent, ReactType } from 'react';
+import React, { PureComponent } from 'react';
 import { Resource, ComponentType, Configurable, Property, State } from '@seafold/core';
-import './Card.scss';
 import { TextControl } from '../../controls/TextControl';
+import './Card.scss';
 
 @Resource.EditorComponent(ComponentType.CONTAINER)
 export class Card extends PureComponent<{heading: Property<string>, text: Property<string>}> {
@@ -17,7 +17,6 @@ export class Card extends PureComponent<{heading: Property<string>, text: Proper
 
   render() {
     const {heading, text, children} = this.props;
-    debugger;
     return (
       <article className='card'>
         <h3 className='card__heading'>

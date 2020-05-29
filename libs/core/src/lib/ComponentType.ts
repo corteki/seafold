@@ -1,4 +1,4 @@
-export enum ComponentType {
+export const enum ComponentType {
   ATOMIC = 'atomic',
   CONTAINER = 'container'
 } 

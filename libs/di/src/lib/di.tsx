@@ -5,7 +5,7 @@ import {
 	PreviewModel,
 	ResourceFactory
 } from '@seafold/user-interface';
-import { App } from 'apps/editor/src/app/app';
+import { EventHandlerContext } from 'apps/editor/src/app/contexts/EventHandlerContext';
 import { buildProviderModule } from "inversify-binding-decorators";
 
 export const container = new Container();
@@ -14,7 +14,7 @@ container.load(
 		bind(PagePanelModel).toSelf();
 		bind(PreviewModel).toSelf();
 		bind(ResourceFactory).toSelf();
-		bind(App).toSelf();
+		bind(EventHandlerContext).toSelf();
 	}),
 	buildProviderModule()
 );
