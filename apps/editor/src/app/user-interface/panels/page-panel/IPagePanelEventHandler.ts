@@ -1,11 +1,10 @@
-import { PagePanelModel } from './presentation/PagePanelModel';
-import { PreviewModel } from './presentation/preview/PreviewModel';
-import { ResourceFactory } from './presentation/container/ResourceFactory';
+import { PagePanelModel } from '../../../contexts/PagePanelModel';
+import { PreviewModel } from '../../../contexts/PreviewModel';
+import { ResourceFactory } from '../../../contexts/ResourceFactory';
 
 export const IPagePanelEventHandler = 'IPagePanelEventHandler';
 export interface IPagePanelEventHandler {
   pagePanel: PagePanelModel;
-  preview: PreviewModel;
   resourceFactory: ResourceFactory;
   clear(): void;
   removeElement(selected: string): void;

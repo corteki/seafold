@@ -1,56 +1,50 @@
 import React, { FC } from 'react';
 import { observer } from "mobx-react";
 import { ComponentType } from '@seafold/core'
-import './PagePanel.scss';
-import { IPagePanelEventHandler } from '@seafold/user-interface';
 import Preview from './preview/Preview';
 import { RecursiveContainerFactory } from './container/RecursiveContainerFactory';
 import { Insert } from './insert/Insert';
 import { InsertEventHandler } from './insert/InsertEventHandler';
-import { Button } from '../../../Button/Button';
+import { Button } from '../../../button/Button';
 import { InsertModel } from './insert/InsertModel';
+import { useEventHandlers, useModels } from 'apps/editor/src/app/contexts';
+import './PagePanel.scss';
 
-/* eslint-disable-next-line */
-export interface PagePanelProps {
-  eventHandler: IPagePanelEventHandler;
-}
 
-export const PagePanel: FC<PagePanelProps> = observer(
-  ({eventHandler}) => {
-  const {pagePanel, preview} = eventHandler;
+export const PagePanel: FC = observer(() => {
+  const {pagePanelEventHandler} = useEventHandlers();
+  const {previewModel, pagePanelModel} = useModels();
   return (
     <section 
       className="page-panel">
       <div className="page-panel__toolbar">
-        <Preview model={preview!}/>
-        <Button onClick={eventHandler.clear}>clear</Button>
+        <Preview model={previewModel}/>
+        <Button onClick={pagePanelEventHandler.clear}>clear</Button>
       </div>
       
-      {pagePanel?.elements.map(root => 
+      {pagePanelModel?.elements.map(root => 
         <section
         data-type={ComponentType.CONTAINER}
         data-dropzone={true}
         id={root.name}
         className="root"
-        onDrop={eventHandler.handleDrop} 
-        onDragOver={eventHandler.handleDragOver}>
+        onDrop={pagePanelEventHandler.handleDrop} 
+        onDragOver={pagePanelEventHandler.handleDragOver}>
         {!root.hasDescendants() && <h1>Drag and drop components into this panel</h1>}
         {
           root
           .getDescendants()
-            .filter(element => pagePanel.components.get(element.name) !== undefined)
+            .filter(element => pagePanelModel.components.get(element.name) !== undefined)
             .map(resource => 
               <RecursiveContainerFactory 
-                components={pagePanel.components}
-                resource={resource}
-                eventHandler={eventHandler}/>
+                components={pagePanelModel.components}
+                resource={resource}/>
             )
         }
         <Insert 
           eventHandler={
             new InsertEventHandler(
-              new InsertModel(root.getLastDescendantIndex()
-              )
+              new InsertModel(root.getLastDescendantIndex())
             )
           }/>
       </section>

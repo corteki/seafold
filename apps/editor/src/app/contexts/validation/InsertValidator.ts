@@ -1,8 +1,6 @@
 import { ComponentType } from '@seafold/core';
-import { provide } from "inversify-binding-decorators";
-import { IInsertValidator } from '../IInsertValidator';
+import { IInsertValidator } from '../../user-interface/panels/page-panel/IInsertValidator';
 
-@provide(IInsertValidator)
 export class InsertValidator implements IInsertValidator {
 
   isValidInsertionSwap(type: ComponentType, dropzone: HTMLElement | null): boolean {

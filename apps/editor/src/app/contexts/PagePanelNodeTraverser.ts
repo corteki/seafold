@@ -1,13 +1,9 @@
-import { provide } from 'inversify-binding-decorators';
-import { IPagePanelNodeTraverser } from '../page-panel/IPagePanelNodeTraverser';
-import { inject } from 'inversify';
-import { IComponentTypeValidator } from '../page-panel/IComponentTypeValidator';
+import { IPagePanelNodeTraverser } from '../user-interface/panels/page-panel/IPagePanelNodeTraverser';
+import { IComponentTypeValidator } from '../user-interface/panels/page-panel/IComponentTypeValidator';
 
-@provide(IPagePanelNodeTraverser)
 export class PagePanelNodeTraverser implements IPagePanelNodeTraverser {
 
-  @inject(IComponentTypeValidator)
-  private componentTypeValidator!: IComponentTypeValidator;
+  constructor(private componentTypeValidator: IComponentTypeValidator) {}
 
   findIndex = (node: Node): number | null => {
     return Array.from(node.parentNode!.children)

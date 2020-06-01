@@ -18,9 +18,7 @@
     "strict": true,
     "baseUrl": ".",
     "paths": {
-      "@seafold/user-interface": ["libs/user-interface/src/index.ts"],
-      "@seafold/core": ["libs/core/src/index.ts"],
-      "@seafold/di": ["libs/di/src/index.ts"]
+      "@seafold/core": ["libs/core/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

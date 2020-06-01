@@ -1,11 +1,10 @@
 import { observable, action } from "mobx";
 import { EditorComponent, EditorElement, runtime, ComponentType } from '@seafold/core';
 import { injectable, inject } from 'inversify';
-import { IPagePanelNodeTraverser } from '../IPagePanelNodeTraverser';
-import { IInsertValidator } from '../IInsertValidator';
-import { IComponentTypeValidator } from '../IComponentTypeValidator';
+import { IPagePanelNodeTraverser } from '../user-interface/panels/page-panel/IPagePanelNodeTraverser';
+import { IInsertValidator } from '../user-interface/panels/page-panel/IInsertValidator';
+import { IComponentTypeValidator } from '../user-interface/panels/page-panel/IComponentTypeValidator';
 
-@injectable()
 export class PagePanelModel {
 
   @observable
@@ -18,14 +17,11 @@ export class PagePanelModel {
 
   draggedElement: HTMLElement | null = null;
 
-  @inject(IInsertValidator)
-  private insertValidator!: IInsertValidator;
-
-  @inject(IPagePanelNodeTraverser)
-  private pagePanelNodeTraverser!: IPagePanelNodeTraverser;
-
-  @inject(IComponentTypeValidator)
-  private componentTypeValidator!: IComponentTypeValidator;
+  constructor(
+    private insertValidator: IInsertValidator,
+    private pagePanelNodeTraverser: IPagePanelNodeTraverser,
+    private componentTypeValidator: IComponentTypeValidator
+  ) {}
 
   @action.bound
   update(type: any, target: HTMLElement): void {

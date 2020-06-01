@@ -26,13 +26,7 @@
       "tags": [],
       "implicitDependencies": ["editor"]
     },
-    "user-interface": {
-      "tags": []
-    },
     "core": {
-      "tags": []
-    },
-    "di": {
       "tags": []
     }
   }

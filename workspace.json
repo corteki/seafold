@@ -22,12 +22,10 @@
           },
           "configurations": {
             "production": {
-              "fileReplacements": [
-                {
-                  "replace": "apps/editor/src/environments/environment.ts",
-                  "with": "apps/editor/src/environments/environment.prod.ts"
-                }
-              ],
+              "fileReplacements": [{
+                "replace": "apps/editor/src/environments/environment.ts",
+                "with": "apps/editor/src/environments/environment.prod.ts"
+              }],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -35,13 +33,11 @@
               "namedChunks": false,
               "extractLicenses": true,
               "vendorChunk": false,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ]
+              "budgets": [{
+                "type": "initial",
+                "maximumWarning": "2mb",
+                "maximumError": "5mb"
+              }]
             }
           }
         },
@@ -107,34 +103,6 @@
         }
       }
     },
-    "user-interface": {
-      "root": "libs/user-interface",
-      "sourceRoot": "libs/user-interface/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/user-interface/.eslintrc",
-            "tsConfig": [
-              "libs/user-interface/tsconfig.lib.json",
-              "libs/user-interface/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/user-interface/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/user-interface/jest.config.js",
-            "tsConfig": "libs/user-interface/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
     "core": {
       "root": "libs/core",
       "sourceRoot": "libs/core/src",
@@ -158,34 +126,6 @@
           "options": {
             "jestConfig": "libs/core/jest.config.js",
             "tsConfig": "libs/core/tsconfig.spec.json",
-            "passWithNoTests": true
-          }
-        }
-      }
-    },
-    "di": {
-      "root": "libs/di",
-      "sourceRoot": "libs/di/src",
-      "projectType": "library",
-      "schematics": {},
-      "architect": {
-        "lint": {
-          "builder": "@nrwl/linter:lint",
-          "options": {
-            "linter": "eslint",
-            "config": "libs/di/.eslintrc",
-            "tsConfig": [
-              "libs/di/tsconfig.lib.json",
-              "libs/di/tsconfig.spec.json"
-            ],
-            "exclude": ["**/node_modules/**", "!libs/di/**"]
-          }
-        },
-        "test": {
-          "builder": "@nrwl/jest:jest",
-          "options": {
-            "jestConfig": "libs/di/jest.config.js",
-            "tsConfig": "libs/di/tsconfig.spec.json",
             "passWithNoTests": true
           }
         }

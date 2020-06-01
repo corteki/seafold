@@ -1,23 +1,15 @@
-import { PagePanelModel } from '../page-panel/presentation/PagePanelModel';
+import { PagePanelModel } from './PagePanelModel';
 import { action } from 'mobx';
 import { runtime } from '@seafold/core';
-import { inject } from 'inversify';
-import { IPagePanelEventHandler } from '../page-panel/IPagePanelEventHandler';
-import { provide } from 'inversify-binding-decorators';
-import { PreviewModel } from '../page-panel/presentation/preview/PreviewModel';
-import { ResourceFactory } from '../page-panel/presentation/container/ResourceFactory';
+import { IPagePanelEventHandler } from '../user-interface/panels/page-panel/IPagePanelEventHandler';
+import { ResourceFactory } from './ResourceFactory';
 
-@provide(IPagePanelEventHandler)
 export class PagePanelEventHandler implements IPagePanelEventHandler {
   
-  @inject(PagePanelModel) 
-  public pagePanel!: PagePanelModel;
-
-  @inject(PreviewModel) 
-  public preview!: PreviewModel;
-
-  @inject(ResourceFactory)
-  public resourceFactory!: ResourceFactory
+  constructor(
+    public pagePanel: PagePanelModel,
+    public resourceFactory: ResourceFactory
+  ) {}
 
   @action.bound
   removeElement(selected: string): void {

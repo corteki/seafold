@@ -1,9 +1,7 @@
 import React from 'react';
 import { EditorComponent } from '@seafold/core';
-import { EditingModel } from '../layers/EditingModel';
-import { injectable } from 'inversify';
+import { EditingModel } from '../user-interface/panels/page-panel/presentation/layers/EditingModel';
 
-@injectable()
 export class ResourceFactory {
   create = (component: EditorComponent, children?: any) => {
     const Resource = component.resource;
@@ -32,8 +30,8 @@ export class ResourceFactory {
         }
       }, {});
     if(children) {
-      return <Resource {...properties}>{children}</Resource>
+      return <Resource key={component.resource.id} {...properties}>{children}</Resource>
     }
-    return <Resource {...properties}/>
+    return <Resource  key={component.resource.id} {...properties}/>
   }
 }

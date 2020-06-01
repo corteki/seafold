@@ -5,6 +5,7 @@ import { ContainerEventHandler } from '../container/ContainerEventHandler';
 import { ComponentType } from '@seafold/core';
 import { observer } from 'mobx-react';
 import { InsertModel } from '../insert/InsertModel';
+import { useEventHandlers, useModels } from 'apps/editor/src/app/contexts';
 
 export interface ContainerProps {
   eventHandler: ContainerEventHandler;
@@ -17,11 +18,11 @@ export const InsertionLayer: FunctionComponent<ContainerProps> = observer(
     type, selected, 
     lastIndex, index
   } = eventHandler.container;
-  const {preview} = eventHandler.pagePanelEventHandler;
+  const { previewModel } = useModels();
   return (
     <>
     {
-    !preview.inPreview && 
+    !previewModel.inPreview && 
       <Insert eventHandler={
         new InsertEventHandler(
           new InsertModel(index, parentPath)
@@ -34,7 +35,7 @@ export const InsertionLayer: FunctionComponent<ContainerProps> = observer(
       data-dropzone={true}
       data-name={name}
       data-type={type}
-      className={`container ${preview.inPreview ? 'inPreview' : selected ? 'isSelected' : ''}`}
+      className={`container ${previewModel.inPreview ? 'inPreview' : selected ? 'isSelected' : ''}`}
       draggable={true}
       onClick={eventHandler.handleClick}
       onKeyDown={eventHandler.handleKeydown}
@@ -42,7 +43,7 @@ export const InsertionLayer: FunctionComponent<ContainerProps> = observer(
       onDrop={eventHandler.handleDrop}
       onDragOver={eventHandler.handleDragOver}>
         {children}
-      {!preview.inPreview && type === ComponentType.CONTAINER && 
+      {!previewModel.inPreview && type === ComponentType.CONTAINER && 
         <Insert eventHandler={
           new InsertEventHandler(
             new InsertModel(lastIndex, path)

@@ -3,46 +3,48 @@ import { Container } from "./Container";
 import { ContainerEventHandler } from './ContainerEventHandler';
 import { ContainerModel } from './ContainerModel';
 import { EditorComponent, EditorElement } from '@seafold/core';
-import { IPagePanelEventHandler } from '@seafold/user-interface';
+import { IPagePanelEventHandler } from '../../IPagePanelEventHandler';
+import { useEventHandlers } from 'apps/editor/src/app/contexts';
 
 interface RecursiveContainerFactoryProps {
   components: Map<string, EditorComponent>;
   resource: EditorElement;
-  eventHandler: IPagePanelEventHandler;
 }
 
 export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFactoryProps> = 
-  ({components, resource, eventHandler}) => {
+  ({components, resource}) => {
   const component = components.get(resource.name);
+  const {pagePanelEventHandler} = useEventHandlers();
   return (
   <Container
+    key={resource.id}
     eventHandler={
       new ContainerEventHandler(
         new ContainerModel(resource, component!.type), 
-        eventHandler
+        pagePanelEventHandler
       )
     }>
     {
       component && 
-        eventHandler.resourceFactory.create(component, 
+        pagePanelEventHandler.resourceFactory.create(component, 
           resource.getDescendants()
             .map(descendant => {
               const component = components.get(descendant.name);          
               if(descendant.hasDescendants()) {
                 return <RecursiveContainerFactory 
                   components={components} 
-                  resource={descendant}
-                  eventHandler={eventHandler}/>
+                  resource={descendant}/>
               }
               return (
               <Container
+                key={descendant.id}
                 eventHandler={
                   new ContainerEventHandler(
                     new ContainerModel(descendant, component!.type), 
-                    eventHandler
+                    pagePanelEventHandler
                   )
                 }>
-              {component && eventHandler.resourceFactory.create(component)}
+              {component && pagePanelEventHandler.resourceFactory.create(component)}
               </Container>
             );
           })
