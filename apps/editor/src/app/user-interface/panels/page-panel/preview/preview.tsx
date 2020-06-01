@@ -1,7 +1,7 @@
 import React from 'react';
 import { PreviewModel } from '../../../../contexts/preview/PreviewModel';
 import { observer } from 'mobx-react';
-import { useEventHandlers } from 'apps/editor/src/app/contexts';
+import { useEventHandler } from 'apps/editor/src/app/contexts';
 import { Button } from '../../../button/Button';
 import './Preview.scss';
 
@@ -11,7 +11,7 @@ export interface PreviewProps {
 
 export const Preview = observer(
   ({model}: PreviewProps) => {
-  const { previewEventHandler } = useEventHandlers();
+  const { previewEventHandler } = useEventHandler();
   return (
     <Button onClick={previewEventHandler.toggleInPreview}>
       preview: {model.inPreview ? 'off' : 'on'}

@@ -9,6 +9,7 @@ import { ComponentTypeValidator } from './page-panel/validation/ComponentTypeVal
 import { PreviewEventHandler } from './preview/PreviewEventHandler';
 import { runtime } from '@seafold/core';
 import { ComponentPanelEventHandler } from './component-panel/ComponentPanelEventHandler';
+import { InsertBuilder } from './page-panel/InsertBuilder';
 
 export class ApplicationContext {
 
@@ -20,16 +21,20 @@ export class ApplicationContext {
     this.componentTypeValidator
   );
 
-  useEventHandlers = () => {
+  useEventHandler = () => {
     return useContext(this.createEventHandlerContext());
   }
 
-  useModels = () => {
+  useModel = () => {
     return useContext(this.createModelContext());
   }
 
   useFactory = () => {
     return useContext(this.createFactoryContext());
+  }
+
+  useBuilder = () => {
+    return useContext(this.createBuilderContext());
   }
 
   useRuntime = () => {
@@ -60,6 +65,12 @@ export class ApplicationContext {
     return createContext({
       resourceFactory: new ResourceFactory()
     })
+  }
+
+  private createBuilderContext() {
+    return createContext({
+      insertBuilder: new InsertBuilder()
+    });
   }
 
   private createRuntimeContext() {

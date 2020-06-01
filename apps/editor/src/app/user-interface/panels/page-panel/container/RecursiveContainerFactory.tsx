@@ -1,9 +1,7 @@
 import React, { FC } from 'react';
-import { Container } from "./Container";
-import { ContainerEventHandler } from './ContainerEventHandler';
-import { ContainerModel } from './ContainerModel';
-import { EditorElement, runtime } from '@seafold/core';
-import { useEventHandlers, useFactory, useRuntime } from 'apps/editor/src/app/contexts';
+import { EditorElement } from '@seafold/core';
+import { useEventHandler, useFactory, useRuntime } from 'apps/editor/src/app/contexts';
+import { ContainerFactory } from './ContainerFactory';
 
 interface RecursiveContainerFactoryProps {
   resource: EditorElement;
@@ -12,43 +10,37 @@ interface RecursiveContainerFactoryProps {
 export const RecursiveContainerFactory: FC<RecursiveContainerFactoryProps> = 
   ({resource}) => {
   const { components } = useRuntime();
-  const { pagePanelEventHandler } = useEventHandlers();
+  const { pagePanelEventHandler } = useEventHandler();
   const { resourceFactory } = useFactory();
   const component = components.get(resource.name);
   return (
-  <Container
-    key={resource.id}
-    eventHandler={
-      new ContainerEventHandler(
-        new ContainerModel(resource, component!.type), 
-        pagePanelEventHandler
-      )
-    }>
-    {
-      component && 
-        resourceFactory.create(component, 
-          resource.getDescendants()
-            .map(descendant => {
-              const component = components.get(descendant.name);          
-              if(descendant.hasDescendants()) {
-                return <RecursiveContainerFactory
-                  resource={descendant}/>
-              }
-              return (
-              <Container
-                key={descendant.id}
-                eventHandler={
-                  new ContainerEventHandler(
-                    new ContainerModel(descendant, component!.type), 
-                    pagePanelEventHandler
-                  )
-                }>
-              {component && resourceFactory.create(component)}
-              </Container>
-            );
-          })
-        )
-      }
-  </Container>
+    <ContainerFactory 
+      key={resource.id}
+      eventHandler={pagePanelEventHandler} 
+      resource={resource} 
+      type={component!.type}>
+      {
+        component && 
+          resourceFactory.create(component, 
+            resource.getDescendants()
+              .map(descendant => {
+                const component = components.get(descendant.name);          
+                if(descendant.hasDescendants()) {
+                  return <RecursiveContainerFactory
+                    resource={descendant}/>
+                }
+                return (
+                <ContainerFactory
+                  key={descendant.id}
+                  resource={descendant}
+                  type={component!.type}
+                  eventHandler={pagePanelEventHandler}>
+                  {component && resourceFactory.create(component)}
+                </ContainerFactory>
+              );
+            })
+          )
+        }
+    </ContainerFactory>
   )
 }

@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import { useRuntime, useEventHandlers } from '../../../contexts';
+import { useRuntime, useEventHandler } from '../../../contexts';
 import './ComponentPanel.scss';
 
 export const ComponentPanel: FC = (props) => {
   const { iterableComponents } = useRuntime();
-  const { componentPanelEventHandler } = useEventHandlers();
+  const { componentPanelEventHandler } = useEventHandler();
   return (
     <section
     className="component-panel">

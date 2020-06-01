@@ -1,19 +1,17 @@
 import React, { FC } from 'react';
 import { observer } from "mobx-react";
-import { ComponentType, runtime } from '@seafold/core'
+import { ComponentType } from '@seafold/core'
 import Preview from './preview/Preview';
 import { RecursiveContainerFactory } from './container/RecursiveContainerFactory';
-import { Insert } from './insert/Insert';
-import { InsertEventHandler } from './insert/InsertEventHandler';
 import { Button } from '../../button/Button';
-import { InsertModel } from './insert/InsertModel';
-import { useEventHandlers, useModels, useRuntime } from 'apps/editor/src/app/contexts';
+import { useEventHandler, useModel, useRuntime, useBuilder } from 'apps/editor/src/app/contexts';
 import './PagePanel.scss';
 
 export const PagePanel: FC = observer(() => {
   const { components } = useRuntime();
-  const { pagePanelEventHandler } = useEventHandlers();
-  const { previewModel, pagePanelModel } = useModels();
+  const { pagePanelEventHandler } = useEventHandler();
+  const { previewModel, pagePanelModel } = useModel();
+  const { insertBuilder } = useBuilder();
   return (
     <section 
       className="page-panel">
@@ -40,12 +38,11 @@ export const PagePanel: FC = observer(() => {
                 resource={resource}/>
             )
         }
-        <Insert 
-          eventHandler={
-            new InsertEventHandler(
-              new InsertModel(root.getLastDescendantIndex())
-            )
-          }/>
+        { 
+          insertBuilder
+            .withIndex(root.getLastDescendantIndex())
+            .build()
+        }
       </section>
       )}
     </section>

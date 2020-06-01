@@ -5,7 +5,7 @@ import { ContainerEventHandler } from '../container/ContainerEventHandler';
 import { ComponentType } from '@seafold/core';
 import { observer } from 'mobx-react';
 import { InsertModel } from '../insert/InsertModel';
-import { useModels } from 'apps/editor/src/app/contexts';
+import { useModel, useBuilder } from 'apps/editor/src/app/contexts';
 
 export interface ContainerProps {
   eventHandler: ContainerEventHandler;
@@ -18,16 +18,16 @@ export const InsertionLayer: FunctionComponent<ContainerProps> = observer(
     type, selected, 
     lastIndex, index
   } = eventHandler.container;
-  const { previewModel } = useModels();
+  const { previewModel } = useModel();
+  const { insertBuilder } = useBuilder();
   return (
     <>
     {
     !previewModel.inPreview && 
-      <Insert eventHandler={
-        new InsertEventHandler(
-          new InsertModel(index, parentPath)
-        )
-      }/>
+      insertBuilder
+        .withIndex(index)
+        .withPath(parentPath)
+        .build()
     }
     <section
       id={path}
@@ -44,11 +44,10 @@ export const InsertionLayer: FunctionComponent<ContainerProps> = observer(
       onDragOver={eventHandler.handleDragOver}>
         {children}
       {!previewModel.inPreview && type === ComponentType.CONTAINER && 
-        <Insert eventHandler={
-          new InsertEventHandler(
-            new InsertModel(lastIndex, path)
-          )
-        }/>
+        insertBuilder
+          .withIndex(lastIndex)
+          .withPath(path)
+          .build()
       }
     </section>
     </>
