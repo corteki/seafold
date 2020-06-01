@@ -1,7 +1,7 @@
 import React from 'react';
 
-import './control-panel.scss';
-import { ControlPanelModel } from './control-panel.model';
+import { ControlPanelModel } from './ControlPanelModel';
+import './ControlPanel.scss';
 
 /* eslint-disable-next-line */
 export interface ControlPanelProps {

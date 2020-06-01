@@ -5,7 +5,7 @@ import { ContainerEventHandler } from '../container/ContainerEventHandler';
 import { ComponentType } from '@seafold/core';
 import { observer } from 'mobx-react';
 import { InsertModel } from '../insert/InsertModel';
-import { useEventHandlers, useModels } from 'apps/editor/src/app/contexts';
+import { useModels } from 'apps/editor/src/app/contexts';
 
 export interface ContainerProps {
   eventHandler: ContainerEventHandler;

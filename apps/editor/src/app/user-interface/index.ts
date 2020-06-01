@@ -1,11 +1,11 @@
 export * from './panels/page-panel/presentation/PagePanel';
-export * from './panels/control-panel/control-panel';
+export * from './panels/control-panel/ControlPanel';
 export * from './panels/component-panel/component-panel';
 
 export { ResourceFactory } from '../contexts/page-panel/ResourceFactory';
 
 export { ControlProps } from './panels/page-panel/presentation/layers/ControlProps';
-export { ControlPanelModel } from './panels/control-panel/control-panel.model';
+export { ControlPanelModel } from './panels/control-panel/ControlPanelModel';
 export { ComponentPanelModel } from './panels/component-panel/component-panel.model';
 
 export { IPagePanelEventHandler } from './panels/page-panel/IPagePanelEventHandler';
