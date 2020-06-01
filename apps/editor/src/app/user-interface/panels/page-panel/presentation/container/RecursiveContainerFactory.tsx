@@ -1,20 +1,20 @@
-import React, { FunctionComponent } from 'react';
+import React, { FC } from 'react';
 import { Container } from "./Container";
 import { ContainerEventHandler } from './ContainerEventHandler';
 import { ContainerModel } from './ContainerModel';
 import { EditorElement, runtime } from '@seafold/core';
-import { useEventHandlers } from 'apps/editor/src/app/contexts';
+import { useEventHandlers, useFactory, useRuntime } from 'apps/editor/src/app/contexts';
 
 interface RecursiveContainerFactoryProps {
   resource: EditorElement;
 }
 
-const components = runtime.componentRegistry.getAll();
-
-export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFactoryProps> = 
+export const RecursiveContainerFactory: FC<RecursiveContainerFactoryProps> = 
   ({resource}) => {
+  const { components } = useRuntime();
+  const { pagePanelEventHandler } = useEventHandlers();
+  const { resourceFactory } = useFactory();
   const component = components.get(resource.name);
-  const {pagePanelEventHandler} = useEventHandlers();
   return (
   <Container
     key={resource.id}
@@ -26,7 +26,7 @@ export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFact
     }>
     {
       component && 
-        pagePanelEventHandler.resourceFactory.create(component, 
+        resourceFactory.create(component, 
           resource.getDescendants()
             .map(descendant => {
               const component = components.get(descendant.name);          
@@ -43,7 +43,7 @@ export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFact
                     pagePanelEventHandler
                   )
                 }>
-              {component && pagePanelEventHandler.resourceFactory.create(component)}
+              {component && resourceFactory.create(component)}
               </Container>
             );
           })

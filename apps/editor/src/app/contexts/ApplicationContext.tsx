@@ -7,6 +7,7 @@ import { InsertValidator } from './validation/InsertValidator';
 import { PagePanelNodeTraverser } from './page-panel/PagePanelNodeTraverser';
 import { ComponentTypeValidator } from './validation/ComponentTypeValidator';
 import { PreviewEventHandler } from './preview/PreviewEventHandler';
+import { runtime } from '@seafold/core';
 
 export class ApplicationContext {
 
@@ -26,6 +27,14 @@ export class ApplicationContext {
     return useContext(this.createModelContext());
   }
 
+  useFactory = () => {
+    return useContext(this.createFactoryContext());
+  }
+
+  useRuntime = () => {
+    return useContext(this.createRuntimeContext());
+  }
+
   private createModelContext() {
     return createContext({
       previewModel: this.previewModel,
@@ -42,6 +51,18 @@ export class ApplicationContext {
       previewEventHandler: new PreviewEventHandler(
         this.previewModel
       ),
+    })
+  }
+
+  private createFactoryContext() {
+    return createContext({
+      resourceFactory: new ResourceFactory()
+    })
+  }
+
+  private createRuntimeContext() {
+    return createContext({
+      components: runtime.componentRegistry.getAll()
     })
   }
 

@@ -7,12 +7,11 @@ import { Insert } from './insert/Insert';
 import { InsertEventHandler } from './insert/InsertEventHandler';
 import { Button } from '../../../button/Button';
 import { InsertModel } from './insert/InsertModel';
-import { useEventHandlers, useModels } from 'apps/editor/src/app/contexts';
+import { useEventHandlers, useModels, useRuntime } from 'apps/editor/src/app/contexts';
 import './PagePanel.scss';
 
-const components = runtime.componentRegistry.getAll();
-
 export const PagePanel: FC = observer(() => {
+  const { components } = useRuntime();
   const { pagePanelEventHandler } = useEventHandlers();
   const { previewModel, pagePanelModel } = useModels();
   return (
