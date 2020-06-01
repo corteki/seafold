@@ -1,3 +1,7 @@
+# what needs to be done
+
+ResourceFactory needs to be revised with EditModel en EditEventHandler
+
 # what has been addressed so far
 
 decorators have been created to register components and controls which are rendered at runtime.

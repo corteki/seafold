@@ -1,6 +1,6 @@
 import React from 'react';
 import { EditorComponent } from '@seafold/core';
-import { EditingModel } from '../../user-interface/panels/page-panel/layers/EditingModel';
+import { EditModel } from './EditModel';
 
 export class ResourceFactory {
   create = (component: EditorComponent, children?: any) => {
@@ -10,7 +10,7 @@ export class ResourceFactory {
       .keys(properties!)
       .map(key => {
         const Control = properties![key].control;
-        const model = new EditingModel(properties![key]);
+        const model = new EditModel(properties![key]);
         if(properties![key].inline) {
           return {
             [key]: {
