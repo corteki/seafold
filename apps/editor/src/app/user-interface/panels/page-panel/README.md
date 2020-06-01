@@ -1,7 +1,3 @@
-# what needs to change
-
-the page-panel component renders recursively but the injection of models is ugly and unmaintainable, find a better way to solve this
-
 # what has been addressed so far
 
 decorators have been created to register components and controls which are rendered at runtime.
@@ -11,6 +7,8 @@ The core business logic has its own layer which handles the most essential parts
 The most crucial code has been covered by a test but should be tested more thouroughly after the user-interface functionality is more stable.
 
 The user-interface layer has been wired up via context
+
+ugly instantiation of objects had been replaced with builder and factory patterns
 
 # tasks
 
