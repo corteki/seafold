@@ -1,5 +1,5 @@
 import React from 'react';
-import { PreviewModel } from '../../../../../contexts/PreviewModel';
+import { PreviewModel } from '../../../../../contexts/preview/PreviewModel';
 import { observer } from 'mobx-react';
 import { useEventHandlers } from 'apps/editor/src/app/contexts';
 import { Button } from '../../../../button/Button';

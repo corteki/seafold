@@ -1,6 +1,6 @@
-import { PagePanelModel } from '../../../contexts/PagePanelModel';
-import { PreviewModel } from '../../../contexts/PreviewModel';
-import { ResourceFactory } from '../../../contexts/ResourceFactory';
+import { PagePanelModel } from '../../../contexts/page-panel/PagePanelModel';
+import { PreviewModel } from '../../../contexts/preview/PreviewModel';
+import { ResourceFactory } from '../../../contexts/page-panel/ResourceFactory';
 
 export const IPagePanelEventHandler = 'IPagePanelEventHandler';
 export interface IPagePanelEventHandler {

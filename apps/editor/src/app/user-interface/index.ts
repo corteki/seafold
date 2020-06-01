@@ -2,7 +2,7 @@ export * from './panels/page-panel/presentation/PagePanel';
 export * from './panels/control-panel/control-panel';
 export * from './panels/component-panel/component-panel';
 
-export { ResourceFactory } from '../contexts/ResourceFactory';
+export { ResourceFactory } from '../contexts/page-panel/ResourceFactory';
 
 export { ControlProps } from './panels/page-panel/presentation/layers/ControlProps';
 export { ControlPanelModel } from './panels/control-panel/control-panel.model';

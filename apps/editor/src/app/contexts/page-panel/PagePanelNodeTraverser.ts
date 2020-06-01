@@ -1,5 +1,5 @@
-import { IPagePanelNodeTraverser } from '../user-interface/panels/page-panel/IPagePanelNodeTraverser';
-import { IComponentTypeValidator } from '../user-interface/panels/page-panel/IComponentTypeValidator';
+import { IPagePanelNodeTraverser } from '../../user-interface/panels/page-panel/IPagePanelNodeTraverser';
+import { IComponentTypeValidator } from '../../user-interface/panels/page-panel/IComponentTypeValidator';
 
 export class PagePanelNodeTraverser implements IPagePanelNodeTraverser {
 

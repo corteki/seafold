@@ -1,9 +1,9 @@
 import { observable, action } from "mobx";
 import { EditorComponent, EditorElement, runtime, ComponentType } from '@seafold/core';
 import { injectable, inject } from 'inversify';
-import { IPagePanelNodeTraverser } from '../user-interface/panels/page-panel/IPagePanelNodeTraverser';
-import { IInsertValidator } from '../user-interface/panels/page-panel/IInsertValidator';
-import { IComponentTypeValidator } from '../user-interface/panels/page-panel/IComponentTypeValidator';
+import { IPagePanelNodeTraverser } from '../../user-interface/panels/page-panel/IPagePanelNodeTraverser';
+import { IInsertValidator } from '../../user-interface/panels/page-panel/IInsertValidator';
+import { IComponentTypeValidator } from '../../user-interface/panels/page-panel/IComponentTypeValidator';
 
 export class PagePanelModel {
 

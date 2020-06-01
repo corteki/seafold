@@ -1,4 +1,4 @@
 import 'mobx-react-lite/batchingForReactDom';
-import { EventHandlerContext } from './EventHandlerContext';
+import { ApplicationContext } from './ApplicationContext';
 
-export const { useEventHandlers, useModels } = new EventHandlerContext();
+export const { useEventHandlers, useModels } = new ApplicationContext();

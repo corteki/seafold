@@ -1,14 +1,14 @@
 import { createContext, useContext } from 'react';
-import { PagePanelEventHandler } from './PagePanelEventHandler';
-import { PagePanelModel } from './PagePanelModel';
-import { PreviewModel } from './PreviewModel';
-import { ResourceFactory } from './ResourceFactory';
+import { PagePanelEventHandler } from './page-panel/PagePanelEventHandler';
+import { PagePanelModel } from './page-panel/PagePanelModel';
+import { PreviewModel } from './preview/PreviewModel';
+import { ResourceFactory } from './page-panel/ResourceFactory';
 import { InsertValidator } from './validation/InsertValidator';
-import { PagePanelNodeTraverser } from './PagePanelNodeTraverser';
+import { PagePanelNodeTraverser } from './page-panel/PagePanelNodeTraverser';
 import { ComponentTypeValidator } from './validation/ComponentTypeValidator';
-import { PreviewEventHandler } from './PreviewEventHandler';
+import { PreviewEventHandler } from './preview/PreviewEventHandler';
 
-export class EventHandlerContext {
+export class ApplicationContext {
 
   private componentTypeValidator = new ComponentTypeValidator();
   private previewModel = new PreviewModel();
