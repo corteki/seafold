@@ -1,7 +1,7 @@
 import React from 'react';
 import './app.scss';
-import './controls';
-import './components';
+import './example/controls';
+import './example/components';
 import { ComponentPanel, ComponentPanelModel, PagePanel, ControlPanel, ControlPanelModel } from './user-interface';
 
 export const App = () => {

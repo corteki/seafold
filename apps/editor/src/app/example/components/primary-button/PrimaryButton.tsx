@@ -1,7 +1,6 @@
 import React, { PureComponent } from 'react';
 import { Property, ComponentType, Resource, Configurable } from '@seafold/core';
 import { TextControl } from '../../controls/TextControl';
-import { StyleControl } from '../../controls/StyleControl';
 
 interface PrimaryButtonProps {
   text: Property<string>;

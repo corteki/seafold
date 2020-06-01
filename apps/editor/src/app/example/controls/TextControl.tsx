@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import { observer } from 'mobx-react';
-import { ControlProps } from '../user-interface';
+import { ControlProps } from '../../user-interface';
 import './Control.scss';
 
 interface TextControlProps extends Partial<ControlProps> {
