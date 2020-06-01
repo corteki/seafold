@@ -2,7 +2,6 @@ export * from './panels/page-panel/PagePanel';
 export * from './panels/control-panel/ControlPanel';
 export * from './panels/component-panel/ComponentPanel';
 
-export { ResourceFactory } from '../contexts/page-panel/ResourceFactory';
 export { ControlProps } from './panels/page-panel/interfaces/ControlProps';
 export { IPagePanelEventHandler } from './panels/page-panel/interfaces/IPagePanelEventHandler';
 export { IComponentTypeValidator } from './panels/page-panel/interfaces/IComponentTypeValidator';

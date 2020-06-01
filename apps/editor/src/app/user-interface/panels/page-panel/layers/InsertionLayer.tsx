@@ -1,10 +1,7 @@
 import React, { FunctionComponent } from 'react';
-import { InsertEventHandler } from '../insert/InsertEventHandler';
-import { Insert } from '../insert/Insert';
 import { ContainerEventHandler } from '../container/ContainerEventHandler';
 import { ComponentType } from '@seafold/core';
 import { observer } from 'mobx-react';
-import { InsertModel } from '../insert/InsertModel';
 import { useModel, useBuilder } from 'apps/editor/src/app/contexts';
 
 export interface ContainerProps {
