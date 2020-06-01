@@ -2,17 +2,17 @@ import React, { FunctionComponent } from 'react';
 import { Container } from "./Container";
 import { ContainerEventHandler } from './ContainerEventHandler';
 import { ContainerModel } from './ContainerModel';
-import { EditorComponent, EditorElement } from '@seafold/core';
-import { IPagePanelEventHandler } from '../../IPagePanelEventHandler';
+import { EditorElement, runtime } from '@seafold/core';
 import { useEventHandlers } from 'apps/editor/src/app/contexts';
 
 interface RecursiveContainerFactoryProps {
-  components: Map<string, EditorComponent>;
   resource: EditorElement;
 }
 
+const components = runtime.componentRegistry.getAll();
+
 export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFactoryProps> = 
-  ({components, resource}) => {
+  ({resource}) => {
   const component = components.get(resource.name);
   const {pagePanelEventHandler} = useEventHandlers();
   return (
@@ -31,8 +31,7 @@ export const RecursiveContainerFactory: FunctionComponent<RecursiveContainerFact
             .map(descendant => {
               const component = components.get(descendant.name);          
               if(descendant.hasDescendants()) {
-                return <RecursiveContainerFactory 
-                  components={components} 
+                return <RecursiveContainerFactory
                   resource={descendant}/>
               }
               return (

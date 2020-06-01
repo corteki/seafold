@@ -13,8 +13,6 @@ export class PagePanelModel {
   @observable
   current: string = '';
 
-  components: Map<string, EditorComponent> = runtime.componentRegistry.getAll();
-
   draggedElement: HTMLElement | null = null;
 
   constructor(

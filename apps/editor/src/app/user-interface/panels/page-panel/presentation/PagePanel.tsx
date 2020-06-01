@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { observer } from "mobx-react";
-import { ComponentType } from '@seafold/core'
+import { ComponentType, runtime } from '@seafold/core'
 import Preview from './preview/Preview';
 import { RecursiveContainerFactory } from './container/RecursiveContainerFactory';
 import { Insert } from './insert/Insert';
@@ -10,10 +10,11 @@ import { InsertModel } from './insert/InsertModel';
 import { useEventHandlers, useModels } from 'apps/editor/src/app/contexts';
 import './PagePanel.scss';
 
+const components = runtime.componentRegistry.getAll();
 
 export const PagePanel: FC = observer(() => {
-  const {pagePanelEventHandler} = useEventHandlers();
-  const {previewModel, pagePanelModel} = useModels();
+  const { pagePanelEventHandler } = useEventHandlers();
+  const { previewModel, pagePanelModel } = useModels();
   return (
     <section 
       className="page-panel">
@@ -34,10 +35,9 @@ export const PagePanel: FC = observer(() => {
         {
           root
           .getDescendants()
-            .filter(element => pagePanelModel.components.get(element.name) !== undefined)
+            .filter(element => components.get(element.name) !== undefined)
             .map(resource => 
               <RecursiveContainerFactory 
-                components={pagePanelModel.components}
                 resource={resource}/>
             )
         }
