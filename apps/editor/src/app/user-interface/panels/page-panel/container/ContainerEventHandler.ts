@@ -1,6 +1,6 @@
 import { ContainerModel } from './ContainerModel';
 import { action } from 'mobx';
-import { IPagePanelEventHandler } from '../../IPagePanelEventHandler';
+import { IPagePanelEventHandler } from '../interfaces/IPagePanelEventHandler';
 
 export class ContainerEventHandler {
 

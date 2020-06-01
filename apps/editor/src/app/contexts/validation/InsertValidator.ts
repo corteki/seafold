@@ -1,5 +1,5 @@
 import { ComponentType } from '@seafold/core';
-import { IInsertValidator } from '../../user-interface/panels/page-panel/IInsertValidator';
+import { IInsertValidator } from '../../user-interface';
 
 export class InsertValidator implements IInsertValidator {
 

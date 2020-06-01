@@ -1,6 +1,6 @@
 import React from 'react';
 import { EditorComponent } from '@seafold/core';
-import { EditingModel } from '../../user-interface/panels/page-panel/presentation/layers/EditingModel';
+import { EditingModel } from '../../user-interface/panels/page-panel/layers/EditingModel';
 
 export class ResourceFactory {
   create = (component: EditorComponent, children?: any) => {

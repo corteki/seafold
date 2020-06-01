@@ -1,5 +1,5 @@
 import { ComponentType } from '@seafold/core';
-import { IComponentTypeValidator } from '../../user-interface/panels/page-panel/IComponentTypeValidator';
+import { IComponentTypeValidator } from '../../user-interface/panels/page-panel/interfaces/IComponentTypeValidator';
 
 export class ComponentTypeValidator implements IComponentTypeValidator {
 

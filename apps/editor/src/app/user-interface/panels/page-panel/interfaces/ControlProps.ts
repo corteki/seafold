@@ -1,4 +1,4 @@
-import { EditingModel } from './EditingModel';
+import { EditingModel } from '../layers/EditingModel';
 
 export interface ControlProps {
   [value: string]: any,

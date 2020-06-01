@@ -1,8 +1,8 @@
 import { PagePanelModel } from './PagePanelModel';
 import { action } from 'mobx';
 import { runtime } from '@seafold/core';
-import { IPagePanelEventHandler } from '../../user-interface/panels/page-panel/IPagePanelEventHandler';
 import { ResourceFactory } from './ResourceFactory';
+import { IPagePanelEventHandler } from '../../user-interface';
 
 export class PagePanelEventHandler implements IPagePanelEventHandler {
   

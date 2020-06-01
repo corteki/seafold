@@ -5,7 +5,7 @@ import Preview from './preview/Preview';
 import { RecursiveContainerFactory } from './container/RecursiveContainerFactory';
 import { Insert } from './insert/Insert';
 import { InsertEventHandler } from './insert/InsertEventHandler';
-import { Button } from '../../../button/Button';
+import { Button } from '../../button/Button';
 import { InsertModel } from './insert/InsertModel';
 import { useEventHandlers, useModels, useRuntime } from 'apps/editor/src/app/contexts';
 import './PagePanel.scss';
