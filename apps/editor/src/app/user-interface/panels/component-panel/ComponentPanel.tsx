@@ -1,6 +1,6 @@
 import React from 'react';
-import './component-panel.scss';
-import { ComponentPanelModel } from './component-panel.model';
+import { ComponentPanelModel } from './ComponentPanelModel';
+import './ComponentPanel.scss';
 
 /* eslint-disable-next-line */
 export interface ComponentPanelProps {
