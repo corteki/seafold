@@ -1,25 +1,21 @@
-import React from 'react';
-import { ComponentPanelModel } from './ComponentPanelModel';
+import React, { FC } from 'react';
+import { useRuntime, useEventHandlers } from '../../../contexts';
 import './ComponentPanel.scss';
 
-/* eslint-disable-next-line */
-export interface ComponentPanelProps {
-  model: ComponentPanelModel;
-}
-
-export const ComponentPanel = (props: ComponentPanelProps) => {
-  const {model} = props;
+export const ComponentPanel: FC = (props) => {
+  const { iterableComponents } = useRuntime();
+  const { componentPanelEventHandler } = useEventHandlers();
   return (
     <section
     className="component-panel">
       {
-        model.components
+        iterableComponents
           .map(Component => 
             <article 
               className="component-panel__item"
               key={(Component as Function).name}
               id={(Component as Function).name}
-              onDragStart={model.handleDrag}
+              onDragStart={componentPanelEventHandler.handleDrag}
               draggable={true}>
               <p>{(Component as Function).name}</p>
             </article>

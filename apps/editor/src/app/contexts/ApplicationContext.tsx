@@ -1,13 +1,14 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, ReactType } from 'react';
 import { PagePanelEventHandler } from './page-panel/PagePanelEventHandler';
 import { PagePanelModel } from './page-panel/PagePanelModel';
 import { PreviewModel } from './preview/PreviewModel';
 import { ResourceFactory } from './page-panel/ResourceFactory';
-import { InsertValidator } from './validation/InsertValidator';
+import { InsertValidator } from './page-panel/validation/InsertValidator';
 import { PagePanelNodeTraverser } from './page-panel/PagePanelNodeTraverser';
-import { ComponentTypeValidator } from './validation/ComponentTypeValidator';
+import { ComponentTypeValidator } from './page-panel/validation/ComponentTypeValidator';
 import { PreviewEventHandler } from './preview/PreviewEventHandler';
 import { runtime } from '@seafold/core';
+import { ComponentPanelEventHandler } from './component-panel/ComponentPanelEventHandler';
 
 export class ApplicationContext {
 
@@ -51,6 +52,7 @@ export class ApplicationContext {
       previewEventHandler: new PreviewEventHandler(
         this.previewModel
       ),
+      componentPanelEventHandler: new ComponentPanelEventHandler()
     })
   }
 
@@ -62,7 +64,9 @@ export class ApplicationContext {
 
   private createRuntimeContext() {
     return createContext({
-      components: runtime.componentRegistry.getAll()
+      components: runtime.componentRegistry.getAll(),
+      iterableControls: runtime.getAllControls<ReactType>(),
+      iterableComponents: runtime.getAllComponents<ReactType>()
     })
   }
 

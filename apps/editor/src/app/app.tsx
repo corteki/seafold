@@ -1,15 +1,14 @@
 import React from 'react';
+import { ComponentPanel, PagePanel, ControlPanel } from './user-interface';
 import './app.scss';
-import './example/controls';
-import './example/components';
-import { ComponentPanel, ComponentPanelModel, PagePanel, ControlPanel, ControlPanelModel } from './user-interface';
+import './example';
 
 export const App = () => {
   return (
     <section className="editor">
-      <ComponentPanel model={new ComponentPanelModel()}/>
+      <ComponentPanel />
       <PagePanel />
-      <ControlPanel model={new ControlPanelModel()}/>
+      <ControlPanel />
     </section>
   );
 }

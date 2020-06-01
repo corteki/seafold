@@ -1,20 +1,15 @@
-import React from 'react';
-
-import { ControlPanelModel } from './ControlPanelModel';
+import React, { FC } from 'react';
+import { useRuntime } from '../../../contexts';
 import './ControlPanel.scss';
 
-/* eslint-disable-next-line */
-export interface ControlPanelProps {
-  model: ControlPanelModel;
-}
 
-export const ControlPanel = (props: ControlPanelProps) => {
-  const {model} = props;
+export const ControlPanel: FC = (props) => {
+  const { iterableControls } = useRuntime();
   return (
     <section 
     className="control-panel">
       {
-        model.controls
+        iterableControls
           .map(Control => 
             <article 
               className="control-panel__item"
